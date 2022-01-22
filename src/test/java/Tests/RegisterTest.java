@@ -50,13 +50,8 @@ public class RegisterTest {
         WebElement genderElement = driver.findElement(By.cssSelector("input[value='Male']"));
         genderElement.click();
 
-        WebElement hobbiesElement = driver.findElement(By.cssSelector("input[value='Cricket']"));
+        WebElement hobbiesElement = driver.findElement(By.cssSelector("input[value='Movies']"));
         hobbiesElement.click();
-
-        WebElement skillsElement = driver.findElement(By.cssSelector("select[id='Skills']"));
-        skillsElement.click();
-        WebElement skillsOptionElement = driver.findElement(By.cssSelector("option[value='Android']"));
-        skillsOptionElement.click();
 
         WebElement passwordElement = driver.findElement(By.cssSelector("input[id='firstpassword']"));
         passwordElement.click();
@@ -65,7 +60,7 @@ public class RegisterTest {
 
         WebElement confirmPasswordElement = driver.findElement(By.cssSelector("input[id='secondpassword']"));
         confirmPasswordElement.click();
-        String confirmPasswordValue = "radu.botareanu@gmail.com";
+        String confirmPasswordValue = "Tralala10!";
         confirmPasswordElement.sendKeys(confirmPasswordValue);
 
 
