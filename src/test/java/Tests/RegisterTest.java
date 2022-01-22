@@ -1,10 +1,11 @@
 package Tests;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class RegisterTest {
 
@@ -52,6 +53,35 @@ public class RegisterTest {
 
         WebElement hobbiesElement = driver.findElement(By.cssSelector("input[value='Movies']"));
         hobbiesElement.click();
+
+        WebElement languagesElement = driver.findElement(By.cssSelector("div[id='msdd']"));
+        languagesElement.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,300)");
+        List<WebElement> LanguageOptions = driver.findElements(By.cssSelector(".ui-autocomplete.ui-front>li>a"));
+        for (int index = 0;index < LanguageOptions.size();index++){
+            if (LanguageOptions.get(index).getText().equals("English")
+                    || LanguageOptions.get(index).getText().equals("Arabic")
+                    || LanguageOptions.get(index).getText().equals("Estonian")){
+                LanguageOptions.get(index).click();
+            }
+        }
+
+        phoneNumberElement.click();
+
+        WebElement countryElement = driver.findElement(By.cssSelector("span[role='combobox']"));
+        countryElement.click();
+        WebElement countryInputElement = driver.findElement(By.className("select2-search__field"));
+        countryInputElement.sendKeys("Australia");
+        countryInputElement.sendKeys(Keys.ENTER);
+
+        WebElement yearElement = driver.findElement(By.id("yearbox"));
+        Select yearSelect = new Select(yearElement);
+        yearSelect.selectByValue("1991");
+        yearElement.click();
+
+        WebElement uploadFileElement = driver.findElement(By.cssSelector("div>input[id=\"imagesrc\"]"));
+        uploadFileElement.sendKeys("C:\\Users\\40724\\Desktop\\Radu's Workspace\\1.png");
 
         WebElement passwordElement = driver.findElement(By.cssSelector("input[id='firstpassword']"));
         passwordElement.click();
