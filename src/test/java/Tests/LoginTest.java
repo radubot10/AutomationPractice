@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -10,10 +11,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest extends SharedData {
 
+    public ElementMethods elementMethods;
+
     // Declaram variabila WebDriver.
 
     @Test
     public void login(){
+
+        elementMethods = new ElementMethods(driver);
 
         WebElement signInElement = driver.findElement(By.id("btn1"));
         signInElement.click();
@@ -30,9 +35,7 @@ public class LoginTest extends SharedData {
         enterElement.click();
 
         WebElement loginError = driver.findElement(By.cssSelector("label[id='errormsg']"));
-        String expectedErrorMesssage = "Invalid User Name or PassWord";
-        String actualErrorMessage = loginError.getText();
-        Assert.assertEquals("Textul cautat nu e corect.",expectedErrorMesssage, actualErrorMessage);
+        elementMethods.validateElementText(loginError, "Invalid User Name or PassWord");
 
         // Quit = inchidem instanta cu toate tab-urile deschise.
         // Close = inchidem tab-ul curent.

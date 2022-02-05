@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,8 +11,12 @@ import java.util.List;
 
 public class RegisterTest extends SharedData {
 
+    public ElementMethods elementMethods;
+
     @Test
     public void register(){
+
+        elementMethods = new ElementMethods(driver);
 
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
         skipSignInElement.click();
@@ -60,7 +65,8 @@ public class RegisterTest extends SharedData {
             }
         }
 
-        phoneNumberElement.click();
+        WebElement skills = driver.findElement(By.id("Skills"));
+        elementMethods.selectElementByText(skills, "Java");
 
         WebElement countryElement = driver.findElement(By.cssSelector("span[role='combobox']"));
         countryElement.click();
@@ -69,9 +75,8 @@ public class RegisterTest extends SharedData {
         countryInputElement.sendKeys(Keys.ENTER);
 
         WebElement yearElement = driver.findElement(By.id("yearbox"));
-        Select yearSelect = new Select(yearElement);
-        yearSelect.selectByValue("1991");
-        yearElement.click();
+        elementMethods.selectElementByValue(yearElement, "1991");
+
 
         WebElement uploadFileElement = driver.findElement(By.cssSelector("div>input[id=\"imagesrc\"]"));
         uploadFileElement.sendKeys("C:\\Users\\40724\\Desktop\\Radu's Workspace\\1.png");
