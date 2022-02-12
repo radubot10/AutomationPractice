@@ -1,44 +1,23 @@
 package Tests;
 
 import Base.SharedData;
-import Help.ElementMethods;
-import org.junit.Assert;
+import Pages.IndexPage;
+import Pages.LoginPage;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest extends SharedData {
 
-    public ElementMethods elementMethods;
-
-    // Declaram variabila WebDriver.
+    public IndexPage indexPage;
+    public LoginPage loginPage;
 
     @Test
     public void login(){
 
-        elementMethods = new ElementMethods(driver);
+        indexPage = new IndexPage(driver);
+        loginPage = new LoginPage(driver);
 
-        WebElement signInElement = driver.findElement(By.id("btn1"));
-        elementMethods.clickElement(signInElement);
-
-        WebElement emailElement = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
-        String emailValue = "radu.botareanu@gmail.com";
-        emailElement.sendKeys(emailValue);
-
-        WebElement passwordElement = driver.findElement(By.cssSelector("input[placeholder='Password']"));
-        String passwordValue = "AlexDorhaEsteLenes6";
-        passwordElement.sendKeys(passwordValue);
-
-        WebElement enterElement = driver.findElement(By.id("enterbtn"));
-        elementMethods.clickElement(enterElement);
-
-        WebElement loginError = driver.findElement(By.cssSelector("label[id='errormsg']"));
-        elementMethods.validateElementText(loginError, "Invalid User Name or PassWord");
-
-        // Quit = inchidem instanta cu toate tab-urile deschise.
-        // Close = inchidem tab-ul curent.
+        indexPage.clickSignIn();
+        loginPage.loginInvalidProcess("test@test.com","Parola123","Invalid User Name or PassWord");
 
     }
 }
