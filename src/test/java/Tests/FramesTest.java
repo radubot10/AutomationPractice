@@ -20,14 +20,14 @@ public class FramesTest extends SharedData {
         elementMethods = new ElementMethods(driver);
 
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
-        skipSignInElement.click();
+        elementMethods.clickElement(skipSignInElement);
 
         WebElement switchToElement = driver.findElement(By.xpath("//a[text()='SwitchTo']"));
         Actions Action = new Actions(driver);
         Action.moveToElement(switchToElement).perform();
 
         WebElement framesElement = driver.findElement(By.xpath("//a[text()='Frames']"));
-        framesElement.click();
+        elementMethods.clickElement(framesElement);
 
         driver.navigate().to("http://demo.automationtesting.in/Frames.html");
 
@@ -38,7 +38,7 @@ public class FramesTest extends SharedData {
         frameMethods.switchToDefault();
 
         WebElement multipleIframe = driver.findElement(By.cssSelector("a[href='#Multiple']"));
-        multipleIframe.click();
+        elementMethods.clickElement(multipleIframe);
 
         frameMethods.switchToFrameByElement(driver.findElement(By.cssSelector("iframe[src='MultipleFrames.html']")));
         frameMethods.switchToFrameByElement(driver.findElement(By.cssSelector("iframe[src='SingleFrame.html']")));
@@ -46,8 +46,4 @@ public class FramesTest extends SharedData {
         elementMethods.fillElement(inputText2, "Test");
 
     }
-
-
-
-
 }

@@ -43,18 +43,17 @@ public class AlertTest extends SharedData {
         List<WebElement> alertOptions = driver.findElements(By.cssSelector(".nav-tabs>li>a"));
         alertOptions.get(0).click();
         WebElement alertOk = driver.findElement(By.cssSelector("#OKTab>button"));
-        alertOk.click();
-
+        elementMethods.clickElement(alertOk);
         alertMethods.acceptAlert();
 
         alertOptions.get(1).click();
         WebElement alertOkCancel = driver.findElement(By.cssSelector("#CancelTab>button"));
-        alertOkCancel.click();
+        elementMethods.clickElement(alertOkCancel);
         alertMethods.cancelAlert();
 
         alertOptions.get(2).click();
         WebElement alertTextbox = driver.findElement(By.cssSelector("#Textbox>button"));
-        alertTextbox.click();
+        elementMethods.clickElement(alertTextbox);
         alertMethods.acceptFillAlert("Test");
 
     }

@@ -19,41 +19,41 @@ public class RegisterTest extends SharedData {
         elementMethods = new ElementMethods(driver);
 
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
-        skipSignInElement.click();
+        elementMethods.clickElement(skipSignInElement);
 
         WebElement firstNameElement = driver.findElement(By.cssSelector("input[placeholder='First Name']"));
-        firstNameElement.click();
+        elementMethods.clickElement(firstNameElement);
         String firstNameValue = "Radu";
         firstNameElement.sendKeys(firstNameValue);
 
         WebElement lastNameElement = driver.findElement(By.cssSelector("input[placeholder='Last Name']"));
-        lastNameElement.click();
+        elementMethods.clickElement(lastNameElement);
         String lastNameValue = "Botareanu";
         lastNameElement.sendKeys(lastNameValue);
 
         WebElement addressElement = driver.findElement(By.cssSelector("textarea[rows='3']"));
-        addressElement.click();
+        elementMethods.clickElement(addressElement);
         String addressValue = "Strada Sub Cetate, nr. 43F, et. 1, ap. 10, Floresti, jud. Cluj, Romania";
         addressElement.sendKeys(addressValue);
 
         WebElement emailElement = driver.findElement(By.cssSelector("input[type='email']"));
-        emailElement.click();
+        elementMethods.clickElement(emailElement);
         String emailValue = "radu.botareanu@gmail.com";
         emailElement.sendKeys(emailValue);
 
         WebElement phoneNumberElement = driver.findElement(By.cssSelector("input[type='tel']"));
-        phoneNumberElement.click();
+        elementMethods.clickElement(phoneNumberElement);
         String phoneNumberValue = "0727561931";
         phoneNumberElement.sendKeys(phoneNumberValue);
 
         WebElement genderElement = driver.findElement(By.cssSelector("input[value='Male']"));
-        genderElement.click();
+        elementMethods.clickElement(genderElement);
 
         WebElement hobbiesElement = driver.findElement(By.cssSelector("input[value='Movies']"));
-        hobbiesElement.click();
+        elementMethods.clickElement(hobbiesElement);
 
         WebElement languagesElement = driver.findElement(By.cssSelector("div[id='msdd']"));
-        languagesElement.click();
+        elementMethods.clickElement(languagesElement);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
         List<WebElement> LanguageOptions = driver.findElements(By.cssSelector(".ui-autocomplete.ui-front>li>a"));
@@ -69,7 +69,7 @@ public class RegisterTest extends SharedData {
         elementMethods.selectElementByText(skills, "Java");
 
         WebElement countryElement = driver.findElement(By.cssSelector("span[role='combobox']"));
-        countryElement.click();
+        elementMethods.clickElement(countryElement);
         WebElement countryInputElement = driver.findElement(By.className("select2-search__field"));
         countryInputElement.sendKeys("Australia");
         countryInputElement.sendKeys(Keys.ENTER);
@@ -82,16 +82,14 @@ public class RegisterTest extends SharedData {
         uploadFileElement.sendKeys("C:\\Users\\40724\\Desktop\\Radu's Workspace\\1.png");
 
         WebElement passwordElement = driver.findElement(By.cssSelector("input[id='firstpassword']"));
-        passwordElement.click();
+        elementMethods.clickElement(passwordElement);
         String passwordValue = "Tralala10!";
         passwordElement.sendKeys(passwordValue);
 
         WebElement confirmPasswordElement = driver.findElement(By.cssSelector("input[id='secondpassword']"));
-        confirmPasswordElement.click();
+        elementMethods.clickElement(confirmPasswordElement);
         String confirmPasswordValue = "Tralala10!";
         confirmPasswordElement.sendKeys(confirmPasswordValue);
-
-
 
     }
 }

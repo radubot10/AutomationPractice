@@ -21,7 +21,7 @@ public class LoginTest extends SharedData {
         elementMethods = new ElementMethods(driver);
 
         WebElement signInElement = driver.findElement(By.id("btn1"));
-        signInElement.click();
+        elementMethods.clickElement(signInElement);
 
         WebElement emailElement = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
         String emailValue = "radu.botareanu@gmail.com";
@@ -32,14 +32,13 @@ public class LoginTest extends SharedData {
         passwordElement.sendKeys(passwordValue);
 
         WebElement enterElement = driver.findElement(By.id("enterbtn"));
-        enterElement.click();
+        elementMethods.clickElement(enterElement);
 
         WebElement loginError = driver.findElement(By.cssSelector("label[id='errormsg']"));
         elementMethods.validateElementText(loginError, "Invalid User Name or PassWord");
 
         // Quit = inchidem instanta cu toate tab-urile deschise.
         // Close = inchidem tab-ul curent.
-
 
     }
 }
