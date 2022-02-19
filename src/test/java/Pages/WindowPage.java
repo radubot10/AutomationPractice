@@ -1,37 +1,25 @@
 package Pages;
 
-import Help.ElementMethods;
-import Help.PageMethods;
-import Help.TabWindowMethods;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class WindowPage {
+public class WindowPage extends BasePage{
 
-    public WebDriver driver;
-    public ElementMethods elementMethods;
-    public TabWindowMethods tabWindowMethods;
-
-    public WindowPage(WebDriver driver){
-        this.driver = driver;
-        elementMethods = new ElementMethods(driver);
-        tabWindowMethods = new TabWindowMethods(driver);
-        PageFactory.initElements(driver, this);
+    public WindowPage(WebDriver driver) {
+        super(driver);
     }
 
     @FindBy(css = ".nav-tabs>li>a")
-    public List<WebElement> windowOptionsElement;
+    private List<WebElement> windowOptionsElement;
     @FindBy(css = "#Tabbed>a>button")
-    public WebElement newTabElement;
+    private WebElement newTabElement;
     @FindBy(css = "#Seperate>button")
-    public WebElement newWindowElement;
+    private WebElement newWindowElement;
     @FindBy(css = "#Multiple>button")
-    public WebElement newWindowTabElement;
+    private WebElement newWindowTabElement;
 
     public void newTabProcess(){
         windowOptionsElement.get(0).click();

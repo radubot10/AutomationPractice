@@ -6,26 +6,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import java.util.HashMap;
 
-    public WebDriver driver;
-    public ElementMethods elementMethods;
+public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver){
-        this.driver = driver;
-        elementMethods = new ElementMethods(driver);
-        PageFactory.initElements(driver,this);
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 
     //elemente
     @FindBy(css = "input[placeholder='E mail']")
-    public WebElement emailElement;
+    private WebElement emailElement;
     @FindBy(css = "input[placeholder='Password']")
-    public WebElement passwordElement;
+    private WebElement passwordElement;
     @FindBy(id = "enterbtn")
-    public WebElement enterElement;
+    private WebElement enterElement;
     @FindBy(css = "label[id='errormsg']")
-    public WebElement errorMessageElement;
+    private WebElement errorMessageElement;
 
     //metode
     public void fillEmail(String value){
@@ -40,10 +37,10 @@ public class LoginPage {
         elementMethods.clickElement(enterElement);
     }
 
-    public void loginInvalidProcess(String email, String password, String error){
-        fillEmail(email);
-        fillPassword(password);
+    public void loginInvalidProcess(HashMap<String, String> inputData){
+        fillEmail(inputData.get("email"));
+        fillPassword(inputData.get("password"));
         clickEnter();
-        elementMethods.validateElementText(errorMessageElement, error);
+        elementMethods.validateElementText(errorMessageElement, inputData.get("message"));
     }
 }

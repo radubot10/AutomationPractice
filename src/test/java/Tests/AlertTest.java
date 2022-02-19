@@ -1,12 +1,13 @@
 package Tests;
 
+import Base.Hooks;
 import Base.SharedData;
 import Pages.AlertPage;
 import Pages.IndexPage;
 import Pages.RegisterPage;
 import org.junit.Test;
 
-public class AlertTest extends SharedData {
+public class AlertTest extends Hooks {
 
     public IndexPage indexPage;
     public RegisterPage registerPage;
@@ -15,9 +16,9 @@ public class AlertTest extends SharedData {
     @Test
     public void TestAutomat(){
 
-        indexPage = new IndexPage(driver);
-        registerPage = new RegisterPage(driver);
-        alertPage = new AlertPage(driver);
+        indexPage = new IndexPage(getDriver());
+        registerPage = new RegisterPage(getDriver());
+        alertPage = new AlertPage(getDriver());
 
         indexPage.clickSkipSignIn();
 
@@ -25,6 +26,6 @@ public class AlertTest extends SharedData {
 
         alertPage.alertOkProcess();
         alertPage.alertOkCancelProcess();
-        alertPage.alertTextProcess("Alex");
+        alertPage.alertTextProcess(inputData);
     }
 }

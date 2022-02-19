@@ -1,11 +1,12 @@
 package Tests;
 
+import Base.Hooks;
 import Base.SharedData;
 import Pages.IndexPage;
 import Pages.LoginPage;
 import org.junit.Test;
 
-public class LoginTest extends SharedData {
+public class LoginTest extends Hooks {
 
     public IndexPage indexPage;
     public LoginPage loginPage;
@@ -13,11 +14,11 @@ public class LoginTest extends SharedData {
     @Test
     public void login(){
 
-        indexPage = new IndexPage(driver);
-        loginPage = new LoginPage(driver);
+        indexPage = new IndexPage(getDriver());
+        loginPage = new LoginPage(getDriver());
 
         indexPage.clickSignIn();
-        loginPage.loginInvalidProcess("test@test.com","Parola123","Invalid User Name or PassWord");
+        loginPage.loginInvalidProcess(inputData);
 
     }
 }
